@@ -1,4 +1,4 @@
-set :branch, "master"
+set :branch, "ch09"
   server "47.92.98.102", user: "deploy", roles: %w{app db web}, my_property: :my_value
 
 
