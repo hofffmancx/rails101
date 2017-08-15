@@ -3,7 +3,7 @@ before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destr
 before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = Group.all.order("created_at DESC")
   end
 
   def show
@@ -23,7 +23,7 @@ before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
        @group.user = current_user
 
        if @group.save
-         current_user.join!(@group)       
+         current_user.join!(@group)
       redirect_to groups_path
     else
       render :new
